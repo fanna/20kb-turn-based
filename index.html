@@ -78,8 +78,8 @@
     var movementPhase = false;
     var turn = 1;
 
-    var mageA = 14;
-    var mageD = 5;
+    var mageA = 1;
+    var mageD = 1;
     var elfA = 15;
     var elfD = 8;
     var knightA = 17;
@@ -88,6 +88,19 @@
     var humanD = 7;
     var dwarfA = 9;
     var dwarfD = 17;
+
+    var e1A = 8;
+    var e1D = 6;
+    var e2A = 14;
+    var e2D = 10;
+    var e3A = 17;
+    var e3D = 12;
+    var e4A = 6;
+    var e4D = 10;
+    var e5A = 3;
+    var e5D = 5;
+
+    if(currentPlayer == 0){atk = 0; def = 0}
 
     function moveP(currentPlayer) {
       if(currentPlayer == 1){
@@ -160,32 +173,36 @@
       }
     }
 
-    var atk, def;
-    atk = def = 0;
-
-    var atkE, defE;
-    atkE = defE = 0;
-
     function chosenEnemy(enemy){
       if(enemy == i6){
         AImovableX = aiX1;
         AImovableY = aiY1;
+        atkE = e1A;
+        defE = e1D
       }
       if(enemy == i7){
         AImovableX = aiX2;
         AImovableY = aiY2;
+        atkE = e2A;
+        defE = e2D
       }
       if(enemy == i8){
         AImovableX = aiX3;
         AImovableY = aiY3;
+        atkE = e3A;
+        defE = e3D
       }
       if(enemy == i9){
         AImovableX = aiX4;
         AImovableY = aiY4;
+        atkE = e4A;
+        defE = e4D
       }
       if(enemy == i10){
         AImovableX = aiX5;
         AImovableY = aiY5;
+        atkE = e5A;
+        defE = e5D
       }
     }
 
@@ -248,41 +265,35 @@
       }
     }
 
-    function playerStats(currentPlayer){
-      if(currentPlayer == 1){
-        atk = mageA;
-        def = mageD;
-        console.log(atk +" "+ def);
-      }
-      if(currentPlayer == 2){
-        atk = elfA;
-        def = elfD;
-        console.log(atk +" "+ def);
-      }
-      if(currentPlayer == 3){
-        atk = knightA;
-        def = knightD;
-        console.log(atk +" "+ def);
-      }
-      if(currentPlayer == 4){
-        atk = humanA;
-        def = humanD;
-        console.log(atk +" "+ def);
-      }
-      if(currentPlayer == 5){
-        atk = dwarfA;
-        def = dwarfD;
-        console.log(atk +" "+ def);
-      }
-      return [atk, def];
-    }
+    var atk, def;
+    atk = def = 0;
 
-    function battle(){
-      if(atk > defE){
-        result = defE - atk
-        if(result <= 0){
-          //MOVE!
+    var atkE, defE;
+    atkE = defE = 0;
+
+    function battle(mX, mY, aIX, aIY){
+      if(mX == aIX && mY == aIY){
+        console.log("BATLEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!");
+        result1 = defE - atk
+        console.log(defE+ " vs " + atk);
+        if(result1 <= 0){
+          return true
         }
+        else {
+          console.log("LOST BATTLE");
+          return false
+        }
+        result2 = def - atkE
+        console.log(def+ " vs " + atkE);
+        if(result2 <= 0){
+          return true
+        }
+        else {
+          console.log("LOST BATTLE");
+          return false
+        }
+      } else {
+        return true
       }
     }
 
@@ -294,7 +305,6 @@
           console.log("1");
           moveP(1);
           currentPlayer = 1;
-          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -303,6 +313,8 @@
           ctx.fillText("Attack: " + mageA,310,100);
           ctx.fillText("Defence: " + mageD,310,120);
           ctx.drawImage(i1, 350, 30);
+          atk = mageA;
+          def = mageD;
           movementPhase = true;
           selectionPhase = false;
         }
@@ -310,7 +322,6 @@
           console.log("2");
           moveP(2);
           currentPlayer = 2;
-          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -319,6 +330,8 @@
           ctx.fillText("Attack: " + elfA,310,100);
           ctx.fillText("Defence: "+ elfD,310,120);
           ctx.drawImage(i2, 350, 30);
+          atk = elfA;
+          def = elfD;
           movementPhase = true;
           selectionPhase = false;
         }
@@ -326,7 +339,6 @@
           console.log("3");
           moveP(3);
           currentPlayer = 3;
-          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -335,6 +347,8 @@
           ctx.fillText("Attack: "+ knightA,310,100);
           ctx.fillText("Defence: "+ knightD,310,120);
           ctx.drawImage(i3, 350, 30);
+          atk = knightA;
+          def = knightD;
           movementPhase = true;
           selectionPhase = false;
         }
@@ -342,7 +356,6 @@
           console.log("4");
           moveP(4);
           currentPlayer = 4;
-          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -351,6 +364,8 @@
           ctx.fillText("Attack: "+ humanA,310,100);
           ctx.fillText("Defence: "+ humanD,310,120);
           ctx.drawImage(i4, 350, 30);
+          atk = humanA;
+          def = humanD;
           movementPhase = true;
           selectionPhase = false;
         }
@@ -358,7 +373,6 @@
           console.log("5");
           moveP(5);
           currentPlayer = 5;
-          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -367,6 +381,8 @@
           ctx.fillText("Attack: "+dwarfA,310,100);
           ctx.fillText("Defence: "+dwarfD,310,120);
           ctx.drawImage(i5, 350, 30);
+          atk = dwarfA;
+          def = dwarfD;
           movementPhase = true;
           selectionPhase = false;
         }
@@ -383,59 +399,68 @@
         ctx.fillText("MOVEMENT PHASE",310,220);
         if(code == 39){
           if(movableX <= 180) {
-            ctx.fillStyle = "#008413";
-            ctx.fillRect(movableX, movableY, 54, 46);
-            ctx.strokeStyle="#FF0000";
-            ctx.strokeRect(movableX,movableY,54,46);
-            movableX += 54;
-            movableY += 0;
-            changePlayerPos(movableX, movableY, currentPlayer);
-            ctx.drawImage(movableImage, movableX, movableY);
+            mX=movableX + 54;
+            mY=movableY + 0;
+            if(battle(mX, mY, AImovableX, AImovableY) == true) {
+              ctx.fillStyle = "#008413";
+              ctx.fillRect(movableX, movableY, 54, 46);
+              ctx.strokeStyle="#FF0000";
+              ctx.strokeRect(movableX,movableY,54,46);
+              changePlayerPos(mX, mY, currentPlayer);
+              ctx.drawImage(movableImage, mX, mY);
+            }
             movementPhase = false;
           }
         }
         if(code == 38){
           if(movableY >= 56) {
-            ctx.fillStyle = "#008413";
-            ctx.fillRect(movableX, movableY, 54, 46);
-            ctx.strokeStyle="#FF0000";
-            ctx.strokeRect(movableX,movableY,54,46);
-            movableY -= 46;
-            movableX += 0;
-            changePlayerPos(movableX, movableY, currentPlayer);
-            ctx.drawImage(movableImage, movableX, movableY);
+            mY=movableY - 46;
+            mX=movableX + 0;
+            if(battle(mX, mY, AImovableX, AImovableY) == true) {
+              ctx.fillStyle = "#008413";
+              ctx.fillRect(movableX, movableY, 54, 46);
+              ctx.strokeStyle="#FF0000";
+              ctx.strokeRect(movableX,movableY,54,46);
+              changePlayerPos(mX, mY, currentPlayer);
+              ctx.drawImage(movableImage, mX, mY);
+            }
             movementPhase = false;
           }
         }
         if(code == 37){
           if(movableX >= 64) {
-            ctx.fillStyle = "#008413";
-            ctx.fillRect(movableX, movableY, 54, 46);
-            ctx.strokeStyle="#FF0000";
-            ctx.strokeRect(movableX,movableY,54,46);
-            movableX -= 54;
-            movableY += 0;
-            changePlayerPos(movableX, movableY, currentPlayer);
-            ctx.drawImage(movableImage, movableX, movableY);
+            mX=movableX - 54;
+            mY=movableY + 0;
+            if(battle(mX, mY, AImovableX, AImovableY) == true) {
+              ctx.fillStyle = "#008413";
+              ctx.fillRect(movableX, movableY, 54, 46);
+              ctx.strokeStyle="#FF0000";
+              ctx.strokeRect(movableX,movableY,54,46);
+              changePlayerPos(mX, mY, currentPlayer);
+              ctx.drawImage(movableImage, mX, mY);
+            }
             movementPhase = false;
           }
         }
         if(code == 40){
           if(movableY <= 180) {
-            ctx.fillStyle = "#008413";
-            ctx.fillRect(movableX, movableY, 54, 46);
-            ctx.strokeStyle="#FF0000";
-            ctx.strokeRect(movableX,movableY,54,46);
-            movableY += 46;
-            movableX += 0;
-            changePlayerPos(movableX, movableY, currentPlayer);
-            ctx.drawImage(movableImage, movableX, movableY);
+            mY = movableY + 46;
+            mX = movableX + 0;
+            if(battle(mX, mY, AImovableX, AImovableY) == true) {
+              ctx.fillStyle = "#008413";
+              ctx.fillRect(movableX, movableY, 54, 46);
+              ctx.strokeStyle="#FF0000";
+              ctx.strokeRect(movableX,movableY,54,46);
+              changePlayerPos(mX, mY, currentPlayer);
+              ctx.drawImage(movableImage, mX, mY);
+            }
             movementPhase = false;
           }
         }
       }
 
       if(code == 27){
+        currentPlayer = 0;
         selectionPhase = true;
         movementPhase = false;
         turn++;
