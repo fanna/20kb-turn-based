@@ -48,7 +48,16 @@
     var y1,y2,y3,y4,y5;
     y1 = y2 = y3 = y4 = y5 = 194;
 
+    var aiX1 = 10;
+    var aiX2 = 64;
+    var aiX3 = 118;
+    var aiX4 = 172;
+    var aiX5 = 226;
+    var aiY1, aiY2, aiY3, aiY4, aiY5;
+    aiY1 = aiY2 = aiY3 = aiY4 = aiY5 = 10;
+
     var movableX, movableY;
+    var AImovableX, AImovableY;
     var movableImage;
 
     i1.onload = function() {
@@ -57,18 +66,17 @@
         ctx.drawImage(i3, x3, y3);
         ctx.drawImage(i4, x4, y4);
         ctx.drawImage(i5, x5, y5);
-        ctx.drawImage(i6, 10, 10);
-        ctx.drawImage(i7, 64, 10);
-        ctx.drawImage(i8, 118, 10);
-        ctx.drawImage(i9, 172, 10);
-        ctx.drawImage(i10, 226, 10);
+        ctx.drawImage(i6, aiX1, aiY1);
+        ctx.drawImage(i7, aiX2, aiY2);
+        ctx.drawImage(i8, aiX3, aiY3);
+        ctx.drawImage(i9, aiX4, aiY4);
+        ctx.drawImage(i10, aiX5, aiY5);
     };
 
     var currentPlayer;
     var selectionPhase = false;
     var movementPhase = false;
     var turn = 1;
-
 
     var mageA = 14;
     var mageD = 5;
@@ -113,27 +121,168 @@
       if(currentPlayer == 1){
         x1 = posX;
         y1 = posY;
-        console.log("Player " + currentPlayer + "X: " + x1 + "Y: " +y1);
       }
       if(currentPlayer == 2){
         x2 = posX;
         y2 = posY;
-        console.log("Player " + currentPlayer + "X: " + x2 + "Y: " +y2);
       }
       if(currentPlayer == 3){
         x3 = posX;
         y3 = posY;
-        console.log("Player " + currentPlayer + "X: " + x3 + "Y: " +y3);
       }
       if(currentPlayer == 4){
         x4 = posX;
         y4 = posY;
-        console.log("Player " + currentPlayer + "X: " + x4 + "Y: " +y4);
       }
       if(currentPlayer == 5){
         x5 = posX;
         y5 = posY;
-        console.log("Player " + currentPlayer + "X: " + x5 + "Y: " +y5);
+      }
+      if(currentPlayer == i6){
+        aiX1 = posX;
+        aiY1 = posY;
+      }
+      if(currentPlayer == i7){
+        aiX2 = posX;
+        aiY2 = posY;
+      }
+      if(currentPlayer == i8){
+        aiX3 = posX;
+        aiY3 = posY;
+      }
+      if(currentPlayer == i9){
+        aiX4 = posX;
+        aiY4 = posY;
+      }
+      if(currentPlayer == i10){
+        aiX5 = posX;
+        aiY5 = posY;
+      }
+    }
+
+    var atk, def;
+    atk = def = 0;
+
+    var atkE, defE;
+    atkE = defE = 0;
+
+    function chosenEnemy(enemy){
+      if(enemy == i6){
+        AImovableX = aiX1;
+        AImovableY = aiY1;
+      }
+      if(enemy == i7){
+        AImovableX = aiX2;
+        AImovableY = aiY2;
+      }
+      if(enemy == i8){
+        AImovableX = aiX3;
+        AImovableY = aiY3;
+      }
+      if(enemy == i9){
+        AImovableX = aiX4;
+        AImovableY = aiY4;
+      }
+      if(enemy == i10){
+        AImovableX = aiX5;
+        AImovableY = aiY5;
+      }
+    }
+
+    function aiMove(){
+      characters = [i6, i7, i8, i9, i10];
+      character = characters[Math.floor(Math.random() * characters.length)];
+
+      direction = Math.floor((Math.random() * 4) + 1);
+      console.log(direction);
+
+      chosenEnemy(character);
+
+      if(direction == 1){ //N
+        if(AImovableY >= 56) {
+          ctx.fillStyle = "#008413";
+          ctx.fillRect(AImovableX, AImovableY, 54, 46);
+          ctx.strokeStyle="#FF0000";
+          ctx.strokeRect(AImovableX, AImovableY,54,46);
+          AImovableY -= 46;
+          AImovableX += 0;
+          changePlayerPos(AImovableX, AImovableY, character);
+          ctx.drawImage(character, AImovableX, AImovableY);
+        }
+      }
+      if(direction == 2){ //E
+        if(AImovableX <= 180) {
+          ctx.fillStyle = "#008413";
+          ctx.fillRect(AImovableX, AImovableY, 54, 46);
+          ctx.strokeStyle="#FF0000";
+          ctx.strokeRect(AImovableX, AImovableY,54,46);
+          AImovableY += 0;
+          AImovableX += 54;
+          changePlayerPos(AImovableX, AImovableY, character);
+          ctx.drawImage(character, AImovableX, AImovableY);
+        }
+      }
+      if(direction == 3){ //W
+        if(AImovableX >= 64) {
+          ctx.fillStyle = "#008413";
+          ctx.fillRect(AImovableX, AImovableY, 54, 46);
+          ctx.strokeStyle="#FF0000";
+          ctx.strokeRect(AImovableX, AImovableY,54,46);
+          AImovableY += 0;
+          AImovableX -= 54;
+          changePlayerPos(AImovableX, AImovableY, character);
+          ctx.drawImage(character, AImovableX, AImovableY);
+        }
+      }
+      if(direction == 4){ //S
+        if(AImovableY <= 180) {
+          ctx.fillStyle = "#008413";
+          ctx.fillRect(AImovableX, AImovableY, 54, 46);
+          ctx.strokeStyle="#FF0000";
+          ctx.strokeRect(AImovableX, AImovableY,54,46);
+          AImovableY += 46;
+          AImovableX += 0;
+          changePlayerPos(AImovableX, AImovableY, character);
+          ctx.drawImage(character, AImovableX, AImovableY);
+        }
+      }
+    }
+
+    function playerStats(currentPlayer){
+      if(currentPlayer == 1){
+        atk = mageA;
+        def = mageD;
+        console.log(atk +" "+ def);
+      }
+      if(currentPlayer == 2){
+        atk = elfA;
+        def = elfD;
+        console.log(atk +" "+ def);
+      }
+      if(currentPlayer == 3){
+        atk = knightA;
+        def = knightD;
+        console.log(atk +" "+ def);
+      }
+      if(currentPlayer == 4){
+        atk = humanA;
+        def = humanD;
+        console.log(atk +" "+ def);
+      }
+      if(currentPlayer == 5){
+        atk = dwarfA;
+        def = dwarfD;
+        console.log(atk +" "+ def);
+      }
+      return [atk, def];
+    }
+
+    function battle(){
+      if(atk > defE){
+        result = defE - atk
+        if(result <= 0){
+          //MOVE!
+        }
       }
     }
 
@@ -145,6 +294,7 @@
           console.log("1");
           moveP(1);
           currentPlayer = 1;
+          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -152,8 +302,6 @@
           ctx.fillText("Hemoth, The Elder Mage",310,25);
           ctx.fillText("Attack: " + mageA,310,100);
           ctx.fillText("Defence: " + mageD,310,120);
-          ctx.fillText("X: " + x1,310,140);
-          ctx.fillText("Y: " + y1,310,160);
           ctx.drawImage(i1, 350, 30);
           movementPhase = true;
           selectionPhase = false;
@@ -162,6 +310,7 @@
           console.log("2");
           moveP(2);
           currentPlayer = 2;
+          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -177,6 +326,7 @@
           console.log("3");
           moveP(3);
           currentPlayer = 3;
+          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -192,6 +342,7 @@
           console.log("4");
           moveP(4);
           currentPlayer = 4;
+          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -207,6 +358,7 @@
           console.log("5");
           moveP(5);
           currentPlayer = 5;
+          playerStats(currentPlayer);
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
@@ -224,6 +376,11 @@
 
       if(movementPhase == true){
         console.log("Movement Phase!");
+        ctx.fillStyle = "#ebd5b3";
+        ctx.fillRect(280, 180, 190, 20);
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("MOVEMENT PHASE",310,220);
         if(code == 39){
           if(movableX <= 180) {
             ctx.fillStyle = "#008413";
@@ -283,11 +440,17 @@
         movementPhase = false;
         turn++;
         console.log("End Turn");
+        aiMove()
         console.log("Turn " + turn + " begins");
       }
       if(code == 13){
         console.log("Game Start");
         selectionPhase = true;
+        ctx.fillStyle = "#ebd5b3";
+        ctx.fillRect(280, 180, 190, 20);
+        ctx.font = "12px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("SELECTION PHASE",310,220);
       }
     }
 
