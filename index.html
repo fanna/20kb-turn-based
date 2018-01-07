@@ -145,15 +145,11 @@
         enemy.def -= character.atk;
         character.def -= enemy.atk
         if(enemy.def <= 0){
-          enemies = enemies.filter(item => item !== enemy);
-          entities = entities.filter(item => item !== enemy);
           enemy.x = 10000;
           enemy.y = 10000;
           return true
         }
         else if(character.def <= 0){
-          array= array.filter(item => item !== character);
-          entities = entities.filter(item => item !== character);
           ctx.fillStyle = "#008413";
           ctx.fillRect(character.x, character.y, 54, 46);
           ctx.strokeStyle="#FF0000";
