@@ -67,8 +67,19 @@
     var currentPlayer;
     var selectionPhase = false;
     var movementPhase = false;
-    var attackPhase = false;
     var turn = 1;
+
+
+    var mageA = 14;
+    var mageD = 5;
+    var elfA = 15;
+    var elfD = 8;
+    var knightA = 17;
+    var knightD = 5;
+    var humanA = 12;
+    var humanD = 7;
+    var dwarfA = 9;
+    var dwarfD = 17;
 
     function moveP(currentPlayer) {
       if(currentPlayer == 1){
@@ -98,6 +109,34 @@
       }
     }
 
+    function changePlayerPos(posX, posY, currentPlayer){
+      if(currentPlayer == 1){
+        x1 = posX;
+        y1 = posY;
+        console.log("Player " + currentPlayer + "X: " + x1 + "Y: " +y1);
+      }
+      if(currentPlayer == 2){
+        x2 = posX;
+        y2 = posY;
+        console.log("Player " + currentPlayer + "X: " + x2 + "Y: " +y2);
+      }
+      if(currentPlayer == 3){
+        x3 = posX;
+        y3 = posY;
+        console.log("Player " + currentPlayer + "X: " + x3 + "Y: " +y3);
+      }
+      if(currentPlayer == 4){
+        x4 = posX;
+        y4 = posY;
+        console.log("Player " + currentPlayer + "X: " + x4 + "Y: " +y4);
+      }
+      if(currentPlayer == 5){
+        x5 = posX;
+        y5 = posY;
+        console.log("Player " + currentPlayer + "X: " + x5 + "Y: " +y5);
+      }
+    }
+
     window.addEventListener('keydown',this.check,false);
     function check(e) {
         var code = e.keyCode;
@@ -105,63 +144,79 @@
         if(code == 49){
           console.log("1");
           moveP(1);
-          selectionPhase = false;
+          currentPlayer = 1;
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
           ctx.fillStyle = "black";
           ctx.fillText("Hemoth, The Elder Mage",310,25);
-          ctx.fillText("Attack: 13",310,100);
+          ctx.fillText("Attack: " + mageA,310,100);
+          ctx.fillText("Defence: " + mageD,310,120);
+          ctx.fillText("X: " + x1,310,140);
+          ctx.fillText("Y: " + y1,310,160);
           ctx.drawImage(i1, 350, 30);
           movementPhase = true;
+          selectionPhase = false;
         }
         if(code == 50){
           console.log("2");
           moveP(2);
-          selectionPhase = false;
+          currentPlayer = 2;
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
           ctx.fillStyle = "black";
           ctx.fillText("Dwala, The Elven Warrior",310,25);
+          ctx.fillText("Attack: " + elfA,310,100);
+          ctx.fillText("Defence: "+ elfD,310,120);
           ctx.drawImage(i2, 350, 30);
           movementPhase = true;
+          selectionPhase = false;
         }
         if(code == 51){
           console.log("3");
           moveP(3);
-          selectionPhase = false;
+          currentPlayer = 3;
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
           ctx.fillStyle = "black";
           ctx.fillText("Knight Nicholas",340,25);
+          ctx.fillText("Attack: "+ knightA,310,100);
+          ctx.fillText("Defence: "+ knightD,310,120);
           ctx.drawImage(i3, 350, 30);
           movementPhase = true;
+          selectionPhase = false;
         }
         if(code == 52){
           console.log("4");
           moveP(4);
-          selectionPhase = false;
+          currentPlayer = 4;
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
           ctx.fillStyle = "black";
           ctx.fillText("Mauricius, The Swift",320,25);
+          ctx.fillText("Attack: "+ humanA,310,100);
+          ctx.fillText("Defence: "+ humanD,310,120);
           ctx.drawImage(i4, 350, 30);
           movementPhase = true;
+          selectionPhase = false;
         }
         if(code == 53){
           console.log("5");
           moveP(5);
-          selectionPhase = false;
+          currentPlayer = 5;
           ctx.fillStyle = "#ebd5b3";
           ctx.fillRect(280, 10, 190, 230);
           ctx.font = "12px Arial";
           ctx.fillStyle = "black";
           ctx.fillText("Gru, The Dwarven Paladin",310,25);
+          ctx.fillText("Attack: "+dwarfA,310,100);
+          ctx.fillText("Defence: "+dwarfD,310,120);
           ctx.drawImage(i5, 350, 30);
           movementPhase = true;
+          selectionPhase = false;
         }
 
         console.log("Selection Phase!");
@@ -175,9 +230,11 @@
             ctx.fillRect(movableX, movableY, 54, 46);
             ctx.strokeStyle="#FF0000";
             ctx.strokeRect(movableX,movableY,54,46);
-            movementPhase = false;
             movableX += 54;
+            movableY += 0;
+            changePlayerPos(movableX, movableY, currentPlayer);
             ctx.drawImage(movableImage, movableX, movableY);
+            movementPhase = false;
           }
         }
         if(code == 38){
@@ -186,9 +243,11 @@
             ctx.fillRect(movableX, movableY, 54, 46);
             ctx.strokeStyle="#FF0000";
             ctx.strokeRect(movableX,movableY,54,46);
-            movementPhase = false;
             movableY -= 46;
+            movableX += 0;
+            changePlayerPos(movableX, movableY, currentPlayer);
             ctx.drawImage(movableImage, movableX, movableY);
+            movementPhase = false;
           }
         }
         if(code == 37){
@@ -197,9 +256,11 @@
             ctx.fillRect(movableX, movableY, 54, 46);
             ctx.strokeStyle="#FF0000";
             ctx.strokeRect(movableX,movableY,54,46);
-            movementPhase = false;
             movableX -= 54;
+            movableY += 0;
+            changePlayerPos(movableX, movableY, currentPlayer);
             ctx.drawImage(movableImage, movableX, movableY);
+            movementPhase = false;
           }
         }
         if(code == 40){
@@ -208,12 +269,15 @@
             ctx.fillRect(movableX, movableY, 54, 46);
             ctx.strokeStyle="#FF0000";
             ctx.strokeRect(movableX,movableY,54,46);
-            movementPhase = false;
             movableY += 46;
+            movableX += 0;
+            changePlayerPos(movableX, movableY, currentPlayer);
             ctx.drawImage(movableImage, movableX, movableY);
+            movementPhase = false;
           }
         }
       }
+
       if(code == 27){
         selectionPhase = true;
         movementPhase = false;
@@ -224,11 +288,6 @@
       if(code == 13){
         console.log("Game Start");
         selectionPhase = true;
-      }
-
-      if(currentPlayer == 0 && movementPhase == false){
-        ctx.fillStyle = "#ebd5b3";
-        ctx.fillRect(280, 10, 190, 230);
       }
     }
 
