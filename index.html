@@ -18,7 +18,6 @@
     ctx.fillStyle = "#ebd5b3";
     ctx.fillRect(280, 10, 190, 230);
 
-    var fields = [];
     var i1 = new Image();
     var i2 = new Image();
     var i3 = new Image();
@@ -39,228 +38,98 @@
     i8.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAuCAMAAABUHhoZAAAAb1BMVEUAAAAAAAAAAD8ABEsADk4AG18AK3MGNnoPQ4cVFRUbU5McHBwnY5soKCgxMTE3c6dEAABENDRHg7NLS0tUREBYWFhdBABil8FoVFB4eHh5ZWF+AACAgICciICjAACzn5O0tLS8AADMyMT89Fj8+PCu+8GEAAAAAXRSTlMAQObYZgAAA1xJREFUeAG91utS4zgQBeBBqC9upJFkFF9iEu+Gef9n3CN7yQTIbBX82FMhBbY/taSWq/jx8K18n/34cnb266v5l3nPRMSiZiGlJC7Ol8Nz1z27hzv5zaDAdENgT/EF7KH76egOe3l5Y5uSXfWNHV4OPx+eojf6D0YtolDI2JuPz4fnn130kvjNPdpdxm+sH5P5pxZPqTd+3J71pp+YgInskzwDYp7kvZfQhyC8K/OfmG77gcehzrDjuH36FMIiJpuC/siCEEr1yBnZtgVDNKXnsxgRlL/DAqkFpCmU2xMQVF8CqzHd28lAW3jYXBpRy1KyMLbyysbs7zEljzgkLxgfUxwNjeh7w19MjGJ3mMiu4jSVBhUzRDVJtpyHTAR1l9HOXl8vc0RJ0hDETMghhPg/MGJm717/vmzOk6ggLqL6ru4zVjPzxxU5ek8eF5Td8nqK3sPdZyhmI5q2FCyuKa84YsG4QHlWpT+xcfxr69qyLETecEr65qCWRYO6P7B+a1FzSrSfGDBTWdARDeS8u8PwZNhVCIIZjiNMi+gZUXLMjI39yNQw7t5p6Y1sZ8k0WZs5O1LVZRnyeya2tGB2QXu0ABbq8VFD0mVjhixIvmW8XVILwdQ8HKOcPICFdmdwPiC6IL9ZVyMPuGktqsbOESteNBWBXgYwA7N3LJZKGUx2Jfj4FlJmUdMrC4r1X1mZS5eHAWxXpnwNiakM2Xm1dsDPN2yuXaxwokDWlrM7VRZ870zM0MxbtpZYS60DqVDbwD6EFNRMTYTbInPsvCjuvGOnMpV5zkNrRFA0IeEnJAsmKocokrt52pzdbslTrZc55wy2nviN9Rba1lzWytnFyySKDMNwZVCnvLH5svp19vPqg+r2C9ixva7TpchHdjrV2Ny0gs3rPgThu9Y8r0eXXRfnA+/Xrmxap3LKJGDrXHIWCwnHuW8JKng0HmqM9IGdTtMlWgqaj8cqtpHWJLMAnzRjbWjSJzbN6/aSjS37q/Y7ISm7EtdamPl2bad6mTq4kJDQiLaGISxqCLtaukNllltWp8sUD3Abg2mkFqKyS1TD2rrK8o6VCTs5R2KWFiCIORaqkRCV0uF2jJ9ZOeCx2EVqiYQdmCOGKlRiu7A53AXLV/br5Wv5Nvt//+f6B3+bcTDgzt2QAAAAAElFTkSuQmCC"
     i9.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAuCAMAAABUHhoZAAAAllBMVEUAAAAAAAAVFRUYNAAcHBwcQAAkFAAkTAAmAAAoKCgoWAAwZAQxMTE0cAQ6IwI8gAhAQEBEAABIKgJLS0tMiBBRMAhYWFhbOAtclBRdBABjY2NmQBJra2tsoBhxSxp4eHh7WSB8rCB+AACAgICIZCiQkJCQuCiRcTCdfTyjhjq0kFO0oEi0tLS8AADMqXTRwRrpxZn8+PBDZFQYAAAAAXRSTlMAQObYZgAAA5xJREFUeNq91tF22jgQBuDKklZhxlrhWiHCrAwmxKS0DfT9X67/iLJgcvYiudj/JCRw+BhpRtHJF/WpfJ59+XDO7NdH84c1yKyeKWO99ylLhmEcBzuEYYhMpFRXK2OUMni8ZaZu1T2LnNKQM1xhtQHC4/PzDWtrpXSI4YZJsXxhADW+8XjLZh3WGEsuLAlDMvOFmda0dwzFYIZBWHHWpyRFx1AYtiGsfseMqOOQzi7aISWg4zFPmLlnSnPMwzFHQT66IQCN2B6bC6vvmBGmjGafxuQzUSQewYbgrDX/wZboZGFGZA5sKdkwhuCESDr0ozBzZcvmytRP5dhZjtp7bfG8aRTSCkMtdcMalDuz8sYKzHHlyhO1/KmQssJaganbRS5reb8jZ7XWFvux+AxRSGEyOKApWxZmQ0qsHWN+7BS2dXYzS1ZdmLqyJTKbCQuBXZRZ51SxNSiMOE9UdTCFmQkzYIbRuxBjGo7jWEU2TD7IyJmqti0NmzJEXnSMYjqkIWBf0btAMY9IoKruIMrXlInTYKQ5sMYTFpayHK9AusLm3rPtssdrMjJniTRSEZH3MUkC2bI5865a/6YQ7RzKWU3kKsyOvU9pt2Ima7C5Uu7KpNjm7e8zY68toTfaeTDyafV9xeRmfzZ3U2273G43byu8hGYPqMZDis4Fz0QUVqfdyrkyuencUAys/4pWonXYWcqYu43FcWHW4nzBTNl227+9wlmfMjmCSlHHGMBcf9o9YeiVlJsuEnl6Pez7r9oD5OMRf+MJLII9Hk4bYeiiuHY9YXDf+r6p5CAT8JCsVHO2Px12T9parcS1L3fMVH81zcMDHAJKmpNn3b+edvtHQ1glXP2yWEyYLfdNRgUvIwetMA29OZwO+82TYTgpt56yJSe5EqNEKEGqh6bZHw773dPKeBY2R7ErW+JWkEtrSEKQM62sbvr9t91u9Wi9l5tosb5lbdt1Wo5fuERkIhe9J423W85efnaLrrsyqK5FGxwRyzksLOVox1GuSiRnLqxtF92/DJ/xUiv0D4EF9uKSzmBIzjmgSWbWzdu2vbLFj38wTRhUoxKGjNZj3Qkb9gylVb2Yz+c3bP2jLeeYy8FAd7LMAetCVfxCTpQxdwzFamGyNjTBI9JMTxVhhFYMvpWZ37PWgBkWcGaFohyTJUhQdWbrlyt7aZXE3TD2zNgRMZgTdWHrKbuUY+KLgrFkocr9/G6Rv54/lM+z//d/rt/yCo2eIB0R9AAAAABJRU5ErkJggg=="
     i10.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAuCAMAAABUHhoZAAAAdVBMVEUAAAAAAAANDQ0VFRUcHBwkFAAoKCgsGQAxMTE0IAA5OTk6IwJAQEBEAABIKgJLS0tRMAhYWFhbOAtdBABjY2NmQBJra2txSxp4eHh7WSB+AACAgICIZCiRcTCdfTyjAACtra20kFO0tLTMqXTRwRrpxZn8+PA6Tq20AAAAAXRSTlMAQObYZgAAA8JJREFUeAG91tGSoygYBeCBH1kFBURpZIX0kJ7M+z/iHkw2Y7p6L2Yu9lSNFR0/zw8mVf2N/VH+nH377dzZz9/NgzFEMqnkOgof0jWHXEq51Fo/PupHLSlHWq2UxFrOjCRJqzYhApgrqZT8YLdacopEm5J3uO//MiKGMoUy7X3YXUo5H21N1ksJUcBJIilfWOuzclNiaCzElMuTXS4lRU2kNoKjE2uOlNwEDSHEuDcGd4f4lKNB3WrBGJ0YnKJxJjKNxZxTQZpEUiopaEFya2XszKBoHcG8h0uXkktbHg6oTLUGo4m+s89MElGbEcyjMLfB4qWgqH7c6u128Qez7GVIH6PX21/dgK6UEvoyDhm1WNwltcXpNuTK6MyYNsZ8B0MRmrB1IXqffM5xYAyX/UCkVr366E+MSIMRNVbw/BI9xjXGG9bSGSISo9WbMfrMJDGz9WRMR8dtEDl7M7BpmRgbBjC1SbkZ/fK6pWU0vpEZoNqdXRcQPOPH9Q2sQxmUpu3Tt2SVJOeeBizl7foDhaFcQsfYtkuUd1BKKiK+vjA4kuKNBj8wueOZPtdbCbiOGQ2G6Ed5MMVPDI6slLPCJhBvqwnZh5oMQwZsKSkhRyLq+S+2LNM0MVKzfHMl4dE0mOSHIbTDYEIuCWwlsis/sb+RZVnmWW4i4e2G4H0afGeS8TG1n4LHkIrW695P05nBTXZeR2F8Kjmlgw0BZzmn9rLFSPa6W9z3ZO/vjfXWrlJorU0ACy4OgwdLwWiM3Yt+3+2CG38xOLCxn4Xg7WsWgnMuuntw3nHRC7uvQC8MbhlHCcc7bbROyXnvfPQp4jGa83vZfzASM+867ZZFY0tdKU7jo0bZKMZ9b+j9/ZVND8Y77paYFwQmucXhSq/EjBmhXhjUZK0kUmDM8UtdclxcXmrmjSkh3tqGtILX1903Jg/G2OXGPi4s31jNrGNoE2Lfp88MaaxtM+ccrHPsVpm7seRwxrGR/b5O0xdsBJNS0MGaREsHcTC4FQx9X7GeC9nqznkyOy1HXpm1tucHixVFv1CrFLOyXzFs5Gotp1ZWq+Mu8oeMFWwWX7AJwey9tATVRbB6487xxioYph/BpumFreuOrD1RD6bxX129hVttrKtx0ULcGXJme4sFk4Q2F3W3LOEjOrYsblmyw+jWrs0hT4bNOAKlwBAXs4NEb8gxdGDK3me6Xp9svjuOrsY04hxkgHFO644E2OGQJ+OP9MT71nawxz8c7r8be0Qp9ZnRnT3r7kHZwdTdndjP/ffy5+x//ZvrH7c0gjsnARbWAAAAAElFTkSuQmCC"
+    var mage = {id: 1, name: "Hemoth, The Elder Mage", image: i1, x: 10, y: 194, atk: 14, def: 5, currentPlayer: false};
+    var elf = {id: 2, name: "Dwala, The Elven Warrior", image: i2, x: 64, y: 194, atk: 15, def: 8, currentPlayer: false};
+    var knight = {id: 3, name: "Knight Nicholas", image: i3, x: 118, y: 194, atk: 17, def: 9, currentPlayer: false};
+    var human = {id: 4, name: "Mauricius, The Swift", image: i4, x: 172, y: 194, atk: 12, def: 7, currentPlayer: false};
+    var dwarf = {id: 5, name: "Gru, The Dwarven Paladin", image: i5, x: 226, y: 194, atk: 9, def: 17, currentPlayer: false};
+    var characters = [mage, elf, knight, human, dwarf];
 
-    var x1 = 10;
-    var x2 = 64;
-    var x3 = 118;
-    var x4 = 172;
-    var x5 = 226;
-    var y1,y2,y3,y4,y5;
-    y1 = y2 = y3 = y4 = y5 = 194;
+    var e1 = {id: 6, image: i6, x: 10, y: 10, atk: 8, def: 6, currentPlayer: false};
+    var e2 = {id: 7, image: i7, x: 64, y: 10, atk: 14, def: 10, currentPlayer: false};
+    var e3 = {id: 8, image: i8, x: 118, y: 10, atk: 17, def: 12, currentPlayer: false};
+    var e4 = {id: 9, image: i9, x: 172, y: 10, atk: 6, def: 10, currentPlayer: false};
+    var e5 = {id: 10, image: i10, x: 226, y: 10, atk: 3, def: 5, currentPlayer: false};
+    var enemies = [e1, e2, e3, e4, e5];
 
-    var aiX1 = 10;
-    var aiX2 = 64;
-    var aiX3 = 118;
-    var aiX4 = 172;
-    var aiX5 = 226;
-    var aiY1, aiY2, aiY3, aiY4, aiY5;
-    aiY1 = aiY2 = aiY3 = aiY4 = aiY5 = 10;
+    var entities = characters.concat(enemies);
 
     var movableX, movableY;
     var AImovableX, AImovableY;
     var movableImage;
 
     i1.onload = function() {
-        ctx.drawImage(i1, x1, y1);
-        ctx.drawImage(i2, x2, y2);
-        ctx.drawImage(i3, x3, y3);
-        ctx.drawImage(i4, x4, y4);
-        ctx.drawImage(i5, x5, y5);
-        ctx.drawImage(i6, aiX1, aiY1);
-        ctx.drawImage(i7, aiX2, aiY2);
-        ctx.drawImage(i8, aiX3, aiY3);
-        ctx.drawImage(i9, aiX4, aiY4);
-        ctx.drawImage(i10, aiX5, aiY5);
+      entities.forEach(function(i) {
+        ctx.drawImage(i.image, i.x, i.y);
+      });
     };
 
-    var currentPlayer;
     var selectionPhase = false;
     var movementPhase = false;
     var turn = 1;
 
-    var mageA = 1;
-    var mageD = 1;
-    var elfA = 15;
-    var elfD = 8;
-    var knightA = 17;
-    var knightD = 5;
-    var humanA = 12;
-    var humanD = 7;
-    var dwarfA = 9;
-    var dwarfD = 17;
-
-    var e1A = 8;
-    var e1D = 6;
-    var e2A = 14;
-    var e2D = 10;
-    var e3A = 17;
-    var e3D = 12;
-    var e4A = 6;
-    var e4D = 10;
-    var e5A = 3;
-    var e5D = 5;
-
-    if(currentPlayer == 0){atk = 0; def = 0}
-
-    function moveP(currentPlayer) {
-      if(currentPlayer == 1){
-        movableX = x1;
-        movableY = y1;
-        movableImage = i1;
+    function findObjectByKey(array, key, value) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i][key] === value) {
+          return array[i];
+        }
       }
-      if(currentPlayer == 2){
-        movableX = x2;
-        movableY = y2;
-        movableImage = i2;
-      }
-      if(currentPlayer == 3){
-        movableX = x3;
-        movableY = y3;
-        movableImage = i3;
-      }
-      if(currentPlayer == 4){
-        movableX = x4;
-        movableY = y4;
-        movableImage = i4;
-      }
-      if(currentPlayer == 5){
-        movableX = x5;
-        movableY = y5;
-        movableImage = i5;
-      }
+      return null;
     }
 
-    function changePlayerPos(posX, posY, currentPlayer){
-      if(currentPlayer == 1){
-        x1 = posX;
-        y1 = posY;
-      }
-      if(currentPlayer == 2){
-        x2 = posX;
-        y2 = posY;
-      }
-      if(currentPlayer == 3){
-        x3 = posX;
-        y3 = posY;
-      }
-      if(currentPlayer == 4){
-        x4 = posX;
-        y4 = posY;
-      }
-      if(currentPlayer == 5){
-        x5 = posX;
-        y5 = posY;
-      }
-      if(currentPlayer == i6){
-        aiX1 = posX;
-        aiY1 = posY;
-      }
-      if(currentPlayer == i7){
-        aiX2 = posX;
-        aiY2 = posY;
-      }
-      if(currentPlayer == i8){
-        aiX3 = posX;
-        aiY3 = posY;
-      }
-      if(currentPlayer == i9){
-        aiX4 = posX;
-        aiY4 = posY;
-      }
-      if(currentPlayer == i10){
-        aiX5 = posX;
-        aiY5 = posY;
-      }
+    if(findObjectByKey(entities, 'currentPlayer', true) == null){atk = 0; def = 0}
+
+    function changePlayerPos(posX, posY){
+      var obj = findObjectByKey(entities, 'currentPlayer', true);
+      obj.x = posX;
+      obj.y = posY;
     }
 
     function chosenEnemy(enemy){
-      if(enemy == i6){
-        AImovableX = aiX1;
-        AImovableY = aiY1;
-        atkE = e1A;
-        defE = e1D
-      }
-      if(enemy == i7){
-        AImovableX = aiX2;
-        AImovableY = aiY2;
-        atkE = e2A;
-        defE = e2D
-      }
-      if(enemy == i8){
-        AImovableX = aiX3;
-        AImovableY = aiY3;
-        atkE = e3A;
-        defE = e3D
-      }
-      if(enemy == i9){
-        AImovableX = aiX4;
-        AImovableY = aiY4;
-        atkE = e4A;
-        defE = e4D
-      }
-      if(enemy == i10){
-        AImovableX = aiX5;
-        AImovableY = aiY5;
-        atkE = e5A;
-        defE = e5D
-      }
+      enemy.currentPlayer = true;
+      AImovableX = enemy.x;
+      AImovableY = enemy.y;
+      atkE = enemy.atk;
+      defE = enemy.def;
+    }
+
+    function movement(numberX, numberY, x, y, character){
+      mx = x + numberX;
+      my = y - numberY;
+      ctx.fillStyle = "#008413";
+      ctx.fillRect(x, y, 54, 46);
+      ctx.strokeStyle="#FF0000";
+      ctx.strokeRect(x, y,54,46);
+      changePlayerPos(mx, my);
+      ctx.drawImage(character.image, mx, my);
+      movementPhase = false;
     }
 
     function aiMove(){
-      characters = [i6, i7, i8, i9, i10];
-      character = characters[Math.floor(Math.random() * characters.length)];
+      enemy = enemies[Math.floor(Math.random() * characters.length)];
 
       direction = Math.floor((Math.random() * 4) + 1);
-      console.log(direction);
 
-      chosenEnemy(character);
+      chosenEnemy(enemy);
 
       if(direction == 1){ //N
         if(AImovableY >= 56) {
-          ctx.fillStyle = "#008413";
-          ctx.fillRect(AImovableX, AImovableY, 54, 46);
-          ctx.strokeStyle="#FF0000";
-          ctx.strokeRect(AImovableX, AImovableY,54,46);
-          AImovableY -= 46;
-          AImovableX += 0;
-          changePlayerPos(AImovableX, AImovableY, character);
-          ctx.drawImage(character, AImovableX, AImovableY);
+          movement(0, 46, AImovableX, AImovableY, enemy);
         }
       }
       if(direction == 2){ //E
         if(AImovableX <= 180) {
-          ctx.fillStyle = "#008413";
-          ctx.fillRect(AImovableX, AImovableY, 54, 46);
-          ctx.strokeStyle="#FF0000";
-          ctx.strokeRect(AImovableX, AImovableY,54,46);
-          AImovableY += 0;
-          AImovableX += 54;
-          changePlayerPos(AImovableX, AImovableY, character);
-          ctx.drawImage(character, AImovableX, AImovableY);
+          movement(54, 0, AImovableX, AImovableY, enemy);
         }
       }
       if(direction == 3){ //W
         if(AImovableX >= 64) {
-          ctx.fillStyle = "#008413";
-          ctx.fillRect(AImovableX, AImovableY, 54, 46);
-          ctx.strokeStyle="#FF0000";
-          ctx.strokeRect(AImovableX, AImovableY,54,46);
-          AImovableY += 0;
-          AImovableX -= 54;
-          changePlayerPos(AImovableX, AImovableY, character);
-          ctx.drawImage(character, AImovableX, AImovableY);
+          movement(-54, 0, AImovableX, AImovableY, enemy);
         }
       }
       if(direction == 4){ //S
         if(AImovableY <= 180) {
-          ctx.fillStyle = "#008413";
-          ctx.fillRect(AImovableX, AImovableY, 54, 46);
-          ctx.strokeStyle="#FF0000";
-          ctx.strokeRect(AImovableX, AImovableY,54,46);
-          AImovableY += 46;
-          AImovableX += 0;
-          changePlayerPos(AImovableX, AImovableY, character);
-          ctx.drawImage(character, AImovableX, AImovableY);
+          movement(0, -46, AImovableX, AImovableY, enemy);
         }
       }
     }
@@ -297,96 +166,44 @@
       }
     }
 
+    function selection(character){
+      character.currentPlayer = true;
+      movableX = character.x;
+      movableY = character.y;
+      movableImage = character.image;
+      ctx.fillStyle = "#ebd5b3";
+      ctx.fillRect(280, 10, 190, 230);
+      ctx.font = "12px Arial";
+      ctx.fillStyle = "black";
+      ctx.fillText(character.name,310,25);
+      ctx.fillText("Attack: " + character.atk,310,100);
+      ctx.fillText("Defence: " +character.def,310,120);
+      ctx.drawImage(character.image, 350, 30);
+      atk = character.atk;
+      def = character.def;
+      movementPhase = true;
+      selectionPhase = false;
+    }
+
     window.addEventListener('keydown',this.check,false);
     function check(e) {
         var code = e.keyCode;
       if(selectionPhase == true){
         if(code == 49){
-          console.log("1");
-          moveP(1);
-          currentPlayer = 1;
-          ctx.fillStyle = "#ebd5b3";
-          ctx.fillRect(280, 10, 190, 230);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = "black";
-          ctx.fillText("Hemoth, The Elder Mage",310,25);
-          ctx.fillText("Attack: " + mageA,310,100);
-          ctx.fillText("Defence: " + mageD,310,120);
-          ctx.drawImage(i1, 350, 30);
-          atk = mageA;
-          def = mageD;
-          movementPhase = true;
-          selectionPhase = false;
+          selection(mage);
         }
         if(code == 50){
-          console.log("2");
-          moveP(2);
-          currentPlayer = 2;
-          ctx.fillStyle = "#ebd5b3";
-          ctx.fillRect(280, 10, 190, 230);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = "black";
-          ctx.fillText("Dwala, The Elven Warrior",310,25);
-          ctx.fillText("Attack: " + elfA,310,100);
-          ctx.fillText("Defence: "+ elfD,310,120);
-          ctx.drawImage(i2, 350, 30);
-          atk = elfA;
-          def = elfD;
-          movementPhase = true;
-          selectionPhase = false;
+          selection(elf);
         }
         if(code == 51){
-          console.log("3");
-          moveP(3);
-          currentPlayer = 3;
-          ctx.fillStyle = "#ebd5b3";
-          ctx.fillRect(280, 10, 190, 230);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = "black";
-          ctx.fillText("Knight Nicholas",340,25);
-          ctx.fillText("Attack: "+ knightA,310,100);
-          ctx.fillText("Defence: "+ knightD,310,120);
-          ctx.drawImage(i3, 350, 30);
-          atk = knightA;
-          def = knightD;
-          movementPhase = true;
-          selectionPhase = false;
+          selection(knight);
         }
         if(code == 52){
-          console.log("4");
-          moveP(4);
-          currentPlayer = 4;
-          ctx.fillStyle = "#ebd5b3";
-          ctx.fillRect(280, 10, 190, 230);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = "black";
-          ctx.fillText("Mauricius, The Swift",320,25);
-          ctx.fillText("Attack: "+ humanA,310,100);
-          ctx.fillText("Defence: "+ humanD,310,120);
-          ctx.drawImage(i4, 350, 30);
-          atk = humanA;
-          def = humanD;
-          movementPhase = true;
-          selectionPhase = false;
+          selection(human);
         }
         if(code == 53){
-          console.log("5");
-          moveP(5);
-          currentPlayer = 5;
-          ctx.fillStyle = "#ebd5b3";
-          ctx.fillRect(280, 10, 190, 230);
-          ctx.font = "12px Arial";
-          ctx.fillStyle = "black";
-          ctx.fillText("Gru, The Dwarven Paladin",310,25);
-          ctx.fillText("Attack: "+dwarfA,310,100);
-          ctx.fillText("Defence: "+dwarfD,310,120);
-          ctx.drawImage(i5, 350, 30);
-          atk = dwarfA;
-          def = dwarfD;
-          movementPhase = true;
-          selectionPhase = false;
+          selection(dwarf);
         }
-
         console.log("Selection Phase!");
       }
 
@@ -397,76 +214,41 @@
         ctx.font = "12px Arial";
         ctx.fillStyle = "black";
         ctx.fillText("MOVEMENT PHASE",310,220);
+        var character = findObjectByKey(characters, 'currentPlayer', true);
+
         if(code == 39){
           if(movableX <= 180) {
-            mX=movableX + 54;
-            mY=movableY + 0;
-            if(battle(mX, mY, AImovableX, AImovableY) == true) {
-              ctx.fillStyle = "#008413";
-              ctx.fillRect(movableX, movableY, 54, 46);
-              ctx.strokeStyle="#FF0000";
-              ctx.strokeRect(movableX,movableY,54,46);
-              changePlayerPos(mX, mY, currentPlayer);
-              ctx.drawImage(movableImage, mX, mY);
-            }
-            movementPhase = false;
+            movement(54, 0, movableX, movableY, character);
           }
         }
         if(code == 38){
           if(movableY >= 56) {
-            mY=movableY - 46;
-            mX=movableX + 0;
-            if(battle(mX, mY, AImovableX, AImovableY) == true) {
-              ctx.fillStyle = "#008413";
-              ctx.fillRect(movableX, movableY, 54, 46);
-              ctx.strokeStyle="#FF0000";
-              ctx.strokeRect(movableX,movableY,54,46);
-              changePlayerPos(mX, mY, currentPlayer);
-              ctx.drawImage(movableImage, mX, mY);
-            }
-            movementPhase = false;
+            movement(0, 46, movableX, movableY, character);
           }
         }
         if(code == 37){
           if(movableX >= 64) {
-            mX=movableX - 54;
-            mY=movableY + 0;
-            if(battle(mX, mY, AImovableX, AImovableY) == true) {
-              ctx.fillStyle = "#008413";
-              ctx.fillRect(movableX, movableY, 54, 46);
-              ctx.strokeStyle="#FF0000";
-              ctx.strokeRect(movableX,movableY,54,46);
-              changePlayerPos(mX, mY, currentPlayer);
-              ctx.drawImage(movableImage, mX, mY);
-            }
-            movementPhase = false;
+            movement(-54, 0, movableX, movableY, character);
           }
         }
         if(code == 40){
           if(movableY <= 180) {
-            mY = movableY + 46;
-            mX = movableX + 0;
-            if(battle(mX, mY, AImovableX, AImovableY) == true) {
-              ctx.fillStyle = "#008413";
-              ctx.fillRect(movableX, movableY, 54, 46);
-              ctx.strokeStyle="#FF0000";
-              ctx.strokeRect(movableX,movableY,54,46);
-              changePlayerPos(mX, mY, currentPlayer);
-              ctx.drawImage(movableImage, mX, mY);
-            }
-            movementPhase = false;
+            movement(0, -46, movableX, movableY, character);
           }
         }
       }
 
       if(code == 27){
-        currentPlayer = 0;
-        selectionPhase = true;
-        movementPhase = false;
+        var obj1 = findObjectByKey(characters, 'currentPlayer', true);
+        obj1.currentPlayer = false;
         turn++;
         console.log("End Turn");
         aiMove()
         console.log("Turn " + turn + " begins");
+        var obj2 = findObjectByKey(enemies, 'currentPlayer', true);
+        obj2.currentPlayer = false;
+        selectionPhase = true;
+        movementPhase = false;
       }
       if(code == 13){
         console.log("Game Start");
@@ -479,7 +261,6 @@
       }
     }
 
-    //draw arena
     var arena = new Path2D();
 
     for (i = 0; i < 270; i+=54) {
